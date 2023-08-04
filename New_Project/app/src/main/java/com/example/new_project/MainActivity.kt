@@ -3,11 +3,11 @@ package com.example.new_project
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.new_project.map.kakaoMap
+import com.example.new_project.ViewModel.mapView.mapView.kakaoMap
 
 class MainActivity : AppCompatActivity() {
 
-    private val mapFragment by lazy{kakaoMap()}
+    private val mapFragment by lazy{ kakaoMap() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
