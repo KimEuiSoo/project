@@ -17,7 +17,7 @@ class api {
 
 class registerApi private constructor(){
     companion object {
-        const val url = "https://bizno.net/api/fapi"
+        const val url = "https://bizno.net/api/"
         const val apiKey = "ZG1sdG4zNDI2QGdtYWlsLmNvbSAg"
 
 
@@ -42,9 +42,14 @@ class registerApi private constructor(){
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             var persondata: companyRequest = retrofit.create(companyRequest::class.java)
-            persondata.request("1","0000000000","json").enqueue(object: Callback<responeBody>{
+            persondata.request(apiKey,"1","0000000000","json").enqueue(object: Callback<responeBody>{
                 override fun onResponse(call: Call<responeBody>, response: Response<responeBody>) {
-                    Log.d("daa", "data")
+                    if(response.isSuccessful && response.code() == 200){
+
+                    }
+                    else {
+                        Log.d("daa", "data")
+                    }
                 }
                 override fun onFailure(call: Call<responeBody>, t: Throwable) {
                     check=false
