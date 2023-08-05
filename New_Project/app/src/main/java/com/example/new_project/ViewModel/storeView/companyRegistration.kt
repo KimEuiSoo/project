@@ -53,8 +53,14 @@ class companyRegistration : Fragment() {
     fun registerClick(){
         binding.btn1.setOnClickListener {
             try{
-                registerHelper.recievData("0000000000")
-                Toast.makeText(mainActivity, "등록완료", Toast.LENGTH_SHORT).show()
+                var code = 0
+                code = registerHelper.recievData(binding.register.text.toString())
+                when(code){
+                    1 -> Toast.makeText(mainActivity, "조회완료", Toast.LENGTH_SHORT).show()
+                    2 -> Toast.makeText(mainActivity, "조회한 가맹점이 없습니다.", Toast.LENGTH_SHORT).show()
+                    else-> Toast.makeText(mainActivity, "조회에러", Toast.LENGTH_SHORT).show()
+                }
+
             }
             catch (e: Exception){
 

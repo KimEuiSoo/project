@@ -2,6 +2,7 @@ package com.example.new_project.util
 
 import android.content.Context
 import android.util.Log
+import com.example.new_project.models.companyData
 import com.example.new_project.models.companyRequest
 import com.example.new_project.models.responeBody
 import retrofit2.Call
@@ -33,8 +34,14 @@ class registerApi private constructor(){
             }
     }
 
-    fun recievData(companyNum: String): Boolean{
-        var check = false
+    /*
+    return 1 : 정상적으로 사업자등록번호로 조회
+    return 2 : 없는 사업자등록번호
+    return 3 : 조회실패 or 타임아웃
+    */
+    fun recievData(companyNum: String): Int{
+        var check = 2
+        if(companyNum.equals("")) return check
         try{
             var urls = URL(url)
             val retrofit =  Retrofit.Builder()
@@ -42,23 +49,40 @@ class registerApi private constructor(){
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             var persondata: companyRequest = retrofit.create(companyRequest::class.java)
-            persondata.request(apiKey,"1","0000000000","json").enqueue(object: Callback<responeBody>{
+            persondata.request(apiKey,"1",companyNum,"json").enqueue(object: Callback<responeBody>{
                 override fun onResponse(call: Call<responeBody>, response: Response<responeBody>) {
-                    if(response.isSuccessful && response.code() == 200){
-
+                    if(response.isSuccessful && response.code() == 200 &&
+                        (response.body()?.resultCode!!.equals("0") || response.body()?.resultCode!!.equals("-1"))){
+                        if(response.body()?.resultCode!!.equals("0")) check=1
+                        else check = 2
                     }
                     else {
-                        Log.d("daa", "data")
+                        check=3
                     }
                 }
                 override fun onFailure(call: Call<responeBody>, t: Throwable) {
-                    check=false
+                    check=3
                 }
             })
         }
         catch (e:Exception){
-
+            check=3
         }
         return check
+    }
+}
+
+class CurrentLocation private constructor(){
+    companion object {
+        //SingleTon Pattern(싱글톤 패턴)
+        @Volatile
+        private var instance: CurrentLocation? = null
+
+        fun getInstance() =
+            instance ?: synchronized(CurrentLocation::class.java) {
+                instance ?: CurrentLocation().also {
+                    instance = it
+                }
+            }
     }
 }

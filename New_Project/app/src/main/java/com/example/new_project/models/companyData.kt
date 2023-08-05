@@ -4,37 +4,25 @@ import com.google.gson.annotations.SerializedName
 
 //사업자 데이터받는 class
 data class companyData(
-    @SerializedName("bno")val bno: String,
-    @SerializedName("cno")val cno: String,
-    @SerializedName("company")val company: String,
-    @SerializedName("BSttCd")val BSttCd: String,
-    @SerializedName("bstt")val bstt: String,
-    @SerializedName("TaxTypeCd")val TaxTypeCd: String,
-    @SerializedName("taxtype")val taxtype: String,
-    @SerializedName("EndDt")val EndDt: String
-){
-    override fun toString(): String {
-        return "companyData : [\n" +
-                "   bno : ${bno}\n" +
-                "   cno : ${cno}\n" +
-                "   company : ${company}\n" +
-                "   BSttCd : ${BSttCd}\n" +
-                "   bstt : ${bstt}\n" +
-                "   TaxTypeCd : ${TaxTypeCd}\n" +
-                "   taxtype : ${taxtype}\n" +
-                "   EndDt : ${EndDt}\n"
-    }
-}
+    val bno: String,        //사업자등록번호
+    val cno: String,        //법인등록번호
+    val company: String,    //회사명
+    val BSttCd: String,     //사업자상태(코드)
+    val bstt: String,       //사업자상태(명칭)
+    val TaxTypeCd: String,  //과세유형(코드)
+    val taxtype: String,    //과세유형(명칭)
+    val EndDt: String       //폐업일
+)
 
 //사업자 등록번호로 조회한 데이터 받는 class
 data class responeBody(
-    @SerializedName("resultCode")var resultCode: String,
-    @SerializedName("resultMsg")var resultMsg: String,
-    @SerializedName("totalCount")var totalCount: String,
-    @SerializedName("item")var item: List<companyData>
+    @SerializedName("resultCode")var resultCode: String,        //결과코드
+    @SerializedName("resultMsg")var resultMsg: String,          //결과메세지
+    @SerializedName("totalCount")var totalCount: String,        //총 아이템 갯수
+    @SerializedName("items")var items: List<companyData>        //가게 리스트
 ){
     override fun toString(): String {
-        return "$item\n\n" +
+        return "$items\n\n" +
                 "resultCode: $resultCode\n" +
                 "resultMsg: $resultMsg\n" +
                 "totalCount: $totalCount"
