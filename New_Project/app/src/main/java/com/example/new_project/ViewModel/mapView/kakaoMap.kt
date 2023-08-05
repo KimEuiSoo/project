@@ -22,12 +22,18 @@ import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
 class kakaoMap : Fragment() {
+    //fragement_kakao_map.xml 바인딩하기 위한 변수ㅠ
     private var _binding: FragmentKakaoMapBinding? = null
     private val binding get() = _binding!!
+    //카카오 맵을 저장하는 함수
     private lateinit var mapView: MapView
+    //현재 위치를 저장한 변수
     lateinit var mLastLocation: Location
+    //맵 위치 정보를 요청하는 변수
     internal lateinit var mLocationRequest: LocationRequest
+    //현재 위치를 가져오기 위한 변수
     private var mFusedLocationProviderClient: FusedLocationProviderClient? = null
+    //activity객체를 사용하기 위한 변수
     lateinit var mainActivity: MainActivity
 
 
@@ -69,7 +75,9 @@ class kakaoMap : Fragment() {
     }
 
     private fun currentLocation(){
+        //mFusedLocationProviderClient인스턴스를 생성
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mainActivity)
+        //기기의 권환 확인
         if (ActivityCompat.checkSelfPermission(mainActivity.applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
             && ActivityCompat.checkSelfPermission(mainActivity.applicationContext,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return

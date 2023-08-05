@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragmentChange(mapFragment)
+        fragmentChange(registerFragment)
     }
 
     private fun fragmentChange(fragment: Fragment){
