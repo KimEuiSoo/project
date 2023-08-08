@@ -12,14 +12,16 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:hint="사업자 등록번호"/>
+        android:hint="  사업자 등록번호"/>
+
     <EditText
         android:id="@+id/address"
         android:layout_centerHorizontal="true"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="250dp"
-        android:hint="주소"/>
+        android:hint="  주소찾기"
+        android:background="@drawable/box_border"/>
 
     <Button
         android:id="@+id/btn1"
@@ -29,6 +31,15 @@
         android:layout_centerVertical="true"
         android:textSize="20dp"
         android:text="확인"
+        />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="310dp"
+        android:background="@drawable/address_btn"
         />
 
 </RelativeLayout>
