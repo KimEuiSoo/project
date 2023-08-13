@@ -1,4 +1,4 @@
-package com.example.new_project.util
+package com.example.new_project.util.api
 
 import com.example.new_project.models.companyRequest
 import com.example.new_project.models.responeBody

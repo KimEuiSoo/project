@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import com.example.new_project.MainActivity
 import com.example.new_project.databinding.FragmentCompanyRegistrationBinding
 import com.example.new_project.models.Global
-import com.example.new_project.util.registerApi
+import com.example.new_project.util.api.registerApi
 import java.lang.Exception
 import java.util.Locale
 
