@@ -3,8 +3,8 @@ package com.example.new_project
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.new_project.ViewModel.mapView.mapView.kakaoMap
-import com.example.new_project.ViewModel.mapView.storeView.companyRegistration
+import com.example.new_project.view.mapView.mapView.kakaoMap
+import com.example.new_project.view.mapView.storeView.companyRegistration
 
 class MainActivity : AppCompatActivity() {
 

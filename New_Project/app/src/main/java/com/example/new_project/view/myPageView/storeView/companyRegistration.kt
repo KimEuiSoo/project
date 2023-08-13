@@ -1,4 +1,4 @@
-package com.example.new_project.ViewModel.mapView.storeView
+package com.example.new_project.view.mapView.storeView
 
 import android.content.Context
 import android.location.Geocoder
@@ -9,9 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.new_project.MainActivity
-import com.example.new_project.R
 import com.example.new_project.databinding.FragmentCompanyRegistrationBinding
 import com.example.new_project.models.Global
 import com.example.new_project.util.registerApi

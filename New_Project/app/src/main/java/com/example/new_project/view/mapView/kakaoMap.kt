@@ -1,4 +1,4 @@
-package com.example.new_project.ViewModel.mapView.mapView
+package com.example.new_project.view.mapView.mapView
 
 import android.Manifest
 import android.content.Context

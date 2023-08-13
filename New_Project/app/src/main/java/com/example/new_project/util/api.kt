@@ -1,13 +1,7 @@
 package com.example.new_project.util
 
-import android.content.Context
-import android.util.Log
-import com.example.new_project.models.companyData
 import com.example.new_project.models.companyRequest
 import com.example.new_project.models.responeBody
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 import java.net.URL
 
-class api {
+class Api {
 }
 
 class registerApi private constructor() {
