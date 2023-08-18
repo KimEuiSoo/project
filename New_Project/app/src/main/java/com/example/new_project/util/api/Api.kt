@@ -1,5 +1,6 @@
 package com.example.new_project.util.api
 
+import com.example.new_project.models.Global
 import com.example.new_project.models.companyRequest
 import com.example.new_project.models.responeBody
 import kotlinx.coroutines.Dispatchers
@@ -64,6 +65,7 @@ class registerApi private constructor() {
             ) {
                 if (response.body()?.resultCode == "0") {
                     check = 1
+                    Global.getCompany(response.body()!!.items.get(0).company)
                 }
                 else check = 2
             } else {

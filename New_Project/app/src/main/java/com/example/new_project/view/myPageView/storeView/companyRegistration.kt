@@ -24,8 +24,10 @@ class companyRegistration : Fragment() {
     private var _binding: FragmentCompanyRegistrationBinding? = null
     private val binding get() = _binding!!
     private lateinit var context: Context
-    lateinit var item: List<companyData>
     lateinit var mainActivity: MainActivity
+    lateinit var company: String
+    lateinit var bno: String
+    var address = "서울 동작구 상도로67길 32"
 
     //registerApi와 연결한 변수
     private val registerHelper: registerApi by lazy {
@@ -73,17 +75,21 @@ class companyRegistration : Fragment() {
     //국세청에 사업자등록번호가 등록되었는지 조회하는 함수
     fun registerClick() {
         var code = 0
-        var bno = binding.register.text.toString()
+        bno = binding.register.text.toString()
         binding.btn1.setOnClickListener {
             try {
-                code = registerHelper.recievData(bno)
+                code = registerHelper.recievData(binding.register.text.toString())
 
                 when (code) {
-                    1 -> Toast.makeText(mainActivity, "조회완료", Toast.LENGTH_SHORT).show()
+                    1 -> {
+                        Toast.makeText(mainActivity, "조회완료", Toast.LENGTH_SHORT).show()
+                        binding.btn1.isEnabled = false
+                        binding.btn1.setText("인증완료")
+                    }
                     2 -> Toast.makeText(mainActivity, "조회한 가맹점이 없습니다.", Toast.LENGTH_SHORT).show()
                     else -> Toast.makeText(mainActivity, "조회에러", Toast.LENGTH_SHORT).show()
                 }
-                //recievAddress(binding.address.text.toString())
+                company = Global.company
                 //Log.d("Location","lat : ${location.latitude}, lon : ${location.longitude}")
             } catch (e: Exception) {
 
@@ -94,10 +100,11 @@ class companyRegistration : Fragment() {
             if(code==1) {
                 try {
                     var storeData = StoreData(
-                        "", "", "어디어디", "1.0 1.9", "학교",
-                        bno, "123123", "1"
+                        "", "", address, "{lat: ${location.latitude}, lon: ${location.longitude}}", "테스트2",
+                        "00000000", "123123", "1"
                     )
                     storeHelper.insertData(storeData)
+                    Toast.makeText(mainActivity, "등록완료59870", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
 
                 }
@@ -112,7 +119,10 @@ class companyRegistration : Fragment() {
     fun addressSearch() {
         binding.btn2.setOnClickListener {
             try {
-                Toast.makeText(mainActivity, "", Toast.LENGTH_SHORT).show()
+                recievAddress(address)
+                Global.getAddress(address)
+                Global.getLocation(location)
+                Toast.makeText(mainActivity, "주소입력완료", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
 
             }
