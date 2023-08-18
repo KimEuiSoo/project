@@ -2,6 +2,9 @@ package com.example.new_project.util.api
 
 import com.example.new_project.models.companyRequest
 import com.example.new_project.models.responeBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,39 +39,39 @@ class registerApi private constructor() {
     return 2 : 없는 사업자등록번호
     return 3 : 조회실패 or 타임아웃
     */
-    fun recievData(companyNum: String): Int {
+    fun recievData(companyNum: String): Int = runBlocking  {
         var check = 2
-        if (companyNum.equals("")) return check
+        if (companyNum.equals("")) return@runBlocking check
 
         try {
-            var urls = URL(url)
+            val urls = URL(url)
             val retrofit = Retrofit.Builder()
                 .baseUrl(urls)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-            var persondata: companyRequest = retrofit.create(companyRequest::class.java)
-            persondata.getRequest(apiKey, "1", companyNum, "json")
-                .enqueue(object : Callback<responeBody> {
-                    override fun onResponse(
-                        call: Call<responeBody>,
-                        response: Response<responeBody>
-                    ) {
-                        if (response.isSuccessful &&
-                            (response.body()?.resultCode!!.equals("0") || response.body()?.resultCode!!.equals("-1"))) {
-                            if (response.body()?.resultCode!!.equals("0")) check = 1
-                            else check = 2
-                        } else {
-                            check = 3
-                        }
-                    }
+            val persondata: companyRequest = retrofit.create(companyRequest::class.java)
 
-                    override fun onFailure(call: Call<responeBody>, t: Throwable) {
-                        check = 3
-                    }
-                })
+            val response: Response<responeBody> = withContext(Dispatchers.IO) {
+                try {
+                    persondata.getRequest(apiKey, "1", companyNum, "json").execute()
+                } catch (e: Exception) {
+                    null
+                }!!
+            }
+
+            if (response != null && response.isSuccessful &&
+                (response.body()?.resultCode == "0" || response.body()?.resultCode == "-1")
+            ) {
+                if (response.body()?.resultCode == "0") {
+                    check = 1
+                }
+                else check = 2
+            } else {
+                check = 3
+            }
         } catch (e: Exception) {
             check = 3
         }
-        return check
+        return@runBlocking check
     }
 }
