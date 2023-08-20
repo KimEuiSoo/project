@@ -11,7 +11,7 @@ data class companyData(
     val bstt: String,       //사업자상태(명칭)
     val TaxTypeCd: String,  //과세유형(코드)
     val taxtype: String,    //과세유형(명칭)
-    val EndDt: String       //폐업일
+    val EndDt: String,      //폐업일
 )
 
 //사업자 등록번호로 조회한 데이터 받는 class
