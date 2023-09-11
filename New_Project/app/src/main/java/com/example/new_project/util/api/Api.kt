@@ -17,7 +17,7 @@ import java.net.URL
 class Api {
 }
 
-class registerApi private constructor() {
+class registerApi {
     companion object {
         const val url = "https://bizno.net/api/"
         const val apiKey = "ZG1sdG4zNDI2QGdtYWlsLmNvbSAg"

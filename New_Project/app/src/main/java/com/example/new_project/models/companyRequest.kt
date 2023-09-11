@@ -15,5 +15,4 @@ interface companyRequest {
         @Query("q") q:String,
         @Query("type") type:String
     ) : Call<responeBody>
-
 }

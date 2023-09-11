@@ -4,7 +4,6 @@ import android.content.Context
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import android.widget.Toast
 import com.example.new_project.MainActivity
 import com.example.new_project.databinding.FragmentCompanyRegistrationBinding
 import com.example.new_project.models.Global
-import com.example.new_project.models.companyData
 import com.example.new_project.models.store.StoreDB
 import com.example.new_project.models.store.StoreData
 import com.example.new_project.util.api.registerApi
