@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.toyproject2.feature.signUp.IdViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.signUp.IdActivity">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/signUpTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="회원 가입"
+                    android:textSize="16dp"
+                    android:textColor="#101112"/>
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp">
+                <TextView
+                    android:id="@+id/emailTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="숭실대학교 메일을 입력해 주세요."
+                    android:textColor="#101112"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="0dp"
+                    android:paddingHorizontal="12dp"
+                    android:background="@drawable/edit_text"
+                    android:layout_marginTop="16dp">
+                    <EditText
+                        android:id="@+id/idText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingVertical="16dp"
+                        android:textSize="15dp"
+                        android:text="@={viewModel.emailId}"
+                        android:background="@null" />
+                    <TextView
+                        android:id="@+id/domain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="\@soongsil.ac.kr"
+                        android:paddingVertical="16dp"
+                        android:textColor="#8E9398"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:text="다음"
+            android:onClick="@{()->viewModel.nextPage()}"
+            android:enabled="@{viewModel.btn}"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="20dp">
+        </Button>
+    </FrameLayout>
+</layout>
