@@ -2,12 +2,14 @@ package com.example.toyproject2.feature.test.home.mainHome
 
 import android.content.ContextParams
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -29,28 +31,35 @@ class MainFragment : BindingFragment<FragmentMainBinding>(R.layout.fragment_main
         layout = view.findViewById(R.id.layoutIndicators)
 
         slider()
-        bestProduct()
-    }
-
-    fun bestProduct(){
-        val itemList = view?.findViewById<RecyclerView>(R.id.item_list)
-
-        val items = viewModel.bestProduct()
-        val adapter = ProductItemAdapter(requireContext(), items, viewModel::service)
-        adapter.notifyDataSetChanged()
-
-        if (itemList != null) {
-            itemList.adapter = adapter
-            itemList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        }
+        viewModel.bestProduct()
+        viewModel.newProduct()
+        viewModel.reservationProduct()
     }
 
     fun slider(){
 
-        val items = viewModel.imageItems();
+        val items = viewModel.testImageItems();
 
         sliderViewPage.offscreenPageLimit = 1;
         sliderViewPage.adapter = ImageSliderAdapter(requireContext(), items);
+
+        var currentPage = 0
+        val handler = Handler()
+
+        val update = Runnable {
+            if (currentPage == items.size) {
+                currentPage = 0
+            }
+            sliderViewPage.setCurrentItem(currentPage++, true)
+        }
+
+        val delay: Long = 3000
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                update.run()
+                handler.postDelayed(this, delay)
+            }
+        }, delay)
 
         sliderViewPage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

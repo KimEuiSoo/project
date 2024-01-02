@@ -12,18 +12,22 @@ import com.example.toyproject2.feature.test.category.CategoryFragment
 import com.example.toyproject2.feature.test.home.mainHome.MainFragment
 import com.example.toyproject2.feature.test.myPage.MyPageFragment
 import com.example.toyproject2.feature.test.search.SearchFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class TestHomeActivity : BindingActivity<ActivityTestHomeBinding>(R.layout.activity_test_home) {
 
     private val viewModel: TestHomeViewModel by viewModels()
-
+    private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
+
+        bottomNavigationView = findViewById(R.id.bnv_bottom_tab)
         setupViewModel()
     }
 
     private fun setupViewModel() {
+        bottomNavigationView.selectedItemId = R.id.menu_item_main
         viewModel.currentFragmentType.observe(this) {
             changeFragment(it)
         }

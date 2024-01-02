@@ -28,17 +28,17 @@
             android:id="@+id/bnv_bottom_tab"
             onNavigationItemSelected="@{viewModel::setCurrentFragment}"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="65dp"
             app:itemActiveIndicatorStyle="@color/transparent"
-            app:itemBackground="@color/transparent"
-            app:backgroundTint="@color/white"
+            app:itemBackground="@color/black"
+            app:backgroundTint="@color/black"
             app:itemIconTint="@color/bg_bottom_navigation_color"
             app:itemTextColor="@color/bg_bottom_navigation_color"
             app:labelVisibilityMode="selected"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/home_navigation_item" />
+            app:menu="@menu/home_navigation_item"/>
         
     </androidx.constraintlayout.widget.ConstraintLayout>
 

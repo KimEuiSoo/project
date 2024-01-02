@@ -6,4 +6,5 @@
     <color name="title">#8DA1D0</color>
     <color name="base_purple">#664FA2</color>
     <color name="second_purple">#A086E6</color>
+    <color name="favorite_red">#FF0000</color>
 </resources>
