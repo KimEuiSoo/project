@@ -15,22 +15,26 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.event.observe(this){handleEvnet(it)}
+        viewModel.event.observe(this) { handleEvnet(it) }
     }
 
-    private fun handleEvnet(event: LoginViewModel.Event){
-        when(event){
+    private fun handleEvnet(event: LoginViewModel.Event) {
+        when (event) {
             is LoginViewModel.Event.Login -> login()
             is LoginViewModel.Event.SignUp -> signUp()
-            is LoginViewModel.Event.Fail -> Toast.makeText(this@LoginActivity, event.msg, Toast.LENGTH_LONG)
+            is LoginViewModel.Event.Fail -> Toast.makeText(
+                this@LoginActivity,
+                event.msg,
+                Toast.LENGTH_LONG
+            )
         }
     }
 
-    private fun login(){
+    private fun login() {
 
     }
 
-    private fun signUp(){
+    private fun signUp() {
 
     }
 }

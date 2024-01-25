@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.toyproject2.R
 
-class TestHomeViewModel: ViewModel() {
+class TestHomeViewModel : ViewModel() {
     private val _currentFragmentType: MutableLiveData<FragmentType> =
         MutableLiveData(FragmentType.MAIN)
     val currentFragmentType: LiveData<FragmentType>

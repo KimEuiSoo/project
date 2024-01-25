@@ -36,7 +36,7 @@ class MainFragment : BindingFragment<FragmentMainBinding>(R.layout.fragment_main
         viewModel.reservationProduct()
     }
 
-    fun slider(){
+    fun slider() {
 
         val items = viewModel.testImageItems();
 

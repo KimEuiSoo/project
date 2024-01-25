@@ -18,7 +18,12 @@ import com.example.toyproject2.R
 import com.example.toyproject2.data.local.ProductItem
 import java.text.DecimalFormat
 
-class ProductItemAdapter(private var context: Context, private var items: ArrayList<ProductItem>, private var type: ProductType, val onClick: (ProductItem, String) -> Unit) :
+class ProductItemAdapter(
+    private var context: Context,
+    private var items: ArrayList<ProductItem>,
+    private var type: ProductType,
+    val onClick: (ProductItem, String) -> Unit
+) :
     RecyclerView.Adapter<ProductItemAdapter.ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -45,12 +50,12 @@ class ProductItemAdapter(private var context: Context, private var items: ArrayL
             onClick(items[position], "")
         }
 
-        holder.favorite.setOnClickListener{
+        holder.favorite.setOnClickListener {
             changeBackground(holder)
             onClick(items[position], "favorite")
         }
 
-        when(type){
+        when (type) {
             ProductType.BEST -> productBest(holder)
             ProductType.NEW -> productNew(holder)
         }
@@ -59,7 +64,7 @@ class ProductItemAdapter(private var context: Context, private var items: ArrayL
     fun formatAccount(account: Int): String {
         var formatPrice: String = ""
         val dec = DecimalFormat("#,###")
-        formatPrice = dec.format(account)+" 원"
+        formatPrice = dec.format(account) + " 원"
         return formatPrice
     }
 
@@ -72,11 +77,11 @@ class ProductItemAdapter(private var context: Context, private var items: ArrayL
         val favorite: ImageView = itemView.findViewById<ImageView>(R.id.product_favorite)
     }
 
-    fun productBest(holder: ProductViewHolder){
+    fun productBest(holder: ProductViewHolder) {
         holder.title.setTextColor(ContextCompat.getColor(context, R.color.white))
     }
 
-    fun productNew(holder: ProductViewHolder){
+    fun productNew(holder: ProductViewHolder) {
         val pixelValue = dpToPx(context, 158f)
 
         holder.title.setTextColor(ContextCompat.getColor(context, R.color.black))
@@ -92,9 +97,10 @@ class ProductItemAdapter(private var context: Context, private var items: ArrayL
         return (dp * density + 0.5f).toInt()
     }
 
-    fun changeBackground(holder: ProductViewHolder){
+    fun changeBackground(holder: ProductViewHolder) {
         holder.favorite.setBackgroundResource(R.drawable.ic_favorite_24)
-        val colorStateList = ColorStateList.valueOf(holder.favorite.context.resources.getColor(R.color.favorite_red))
+        val colorStateList =
+            ColorStateList.valueOf(holder.favorite.context.resources.getColor(R.color.favorite_red))
         holder.favorite.backgroundTintList = colorStateList
     }
 }

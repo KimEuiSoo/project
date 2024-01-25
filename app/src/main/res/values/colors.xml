@@ -7,4 +7,5 @@
     <color name="base_purple">#664FA2</color>
     <color name="second_purple">#A086E6</color>
     <color name="favorite_red">#FF0000</color>
+    <color name="select_bg">#F3F3F3</color>
 </resources>

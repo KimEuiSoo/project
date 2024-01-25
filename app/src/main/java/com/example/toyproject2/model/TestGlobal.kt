@@ -3,10 +3,12 @@ package com.example.toyproject2.model
 import com.example.toyproject2.data.local.CategoryItem
 import com.example.toyproject2.data.local.DataPage
 import com.example.toyproject2.data.local.ProductItem
+import com.example.toyproject2.feature.test.category.DetailCategoryType
+import com.example.toyproject2.feature.test.category.detail.DetailCategoryFragment
 
 class TestGlobal {
 
-    fun bannerList(): ArrayList<DataPage>{
+    fun bannerList(): ArrayList<DataPage> {
         val items: ArrayList<DataPage> = ArrayList()
         items.add(DataPage("img1"))
         items.add(DataPage("img2"))
@@ -15,7 +17,8 @@ class TestGlobal {
         items.add(DataPage("img5"))
         return items
     }
-    fun itemList(): ArrayList<ProductItem>{
+
+    fun itemList(): ArrayList<ProductItem> {
         val items: ArrayList<ProductItem> = ArrayList()
         val item1 = ProductItem(
             "item",
@@ -73,16 +76,73 @@ class TestGlobal {
         items.add(item6)
         return items
     }
-    fun categoryList(): ArrayList<CategoryItem>{
+
+    fun categoryList(type: DetailCategoryType = DetailCategoryType.A): ArrayList<CategoryItem> {
         val items: ArrayList<CategoryItem> = ArrayList()
-        val item1 = CategoryItem("신규입하", "신규입하", "img3")
-        val item2 = CategoryItem("발매예약상품", "발매예약상품", "img2")
-        val item3 = CategoryItem("상품 분류", "상품 분류", "img1")
-        val item4 = CategoryItem("작품별", "작품별", "img2")
-        val item5 = CategoryItem("제조사별", "제조사별", "img3")
-        val item6 = CategoryItem("굿스마일", "굿스마일", "img4")
-        val item7 = CategoryItem("캐릭터굿즈", "캐릭터굿즈", "img5")
-        val item8 = CategoryItem("액션피규어", "액션피규어", "img1")
+        val item1 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "신규입하"
+                    else -> "${type}"
+                }
+            }", "신규입하", "img3"
+        )
+        val item2 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "발매예약상품"
+                    else -> "${type}"
+                }
+            }", "발매예약상품", "img2"
+        )
+        val item3 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "상품 분류"
+                    else -> "${type}"
+                }
+            }", "상품 분류", "img1"
+        )
+        val item4 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "작품별"
+                    else -> "${type}"
+                }
+            }", "작품별", "img2"
+        )
+        val item5 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "제조사별"
+                    else -> "${type}"
+                }
+            }", "제조사별", "img3"
+        )
+        val item6 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "굿스마일"
+                    else -> "${type}"
+                }
+            }", "굿스마일", "img4"
+        )
+        val item7 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "캐릭터굿즈"
+                    else -> "${type}"
+                }
+            }", "캐릭터굿즈", "img5"
+        )
+        val item8 = CategoryItem(
+            "${
+                when (type) {
+                    DetailCategoryType.A -> "액션피규어"
+                    else -> "${type}"
+                }
+            }", "액션피규어", "img1"
+        )
         items.add(item1)
         items.add(item2)
         items.add(item3)
@@ -92,5 +152,24 @@ class TestGlobal {
         items.add(item7)
         items.add(item8)
         return items
+    }
+
+    fun detailCategoryList(type: DetailCategoryType): ArrayList<CategoryItem> {
+        return when (type) {
+            DetailCategoryType.A -> categoryList(type)
+            DetailCategoryType.B -> categoryList(type)
+            DetailCategoryType.C -> categoryList(type)
+            DetailCategoryType.D -> categoryList(type)
+            DetailCategoryType.E -> categoryList(type)
+            DetailCategoryType.F -> categoryList(type)
+            DetailCategoryType.G -> categoryList(type)
+            DetailCategoryType.H -> categoryList(type)
+            DetailCategoryType.I -> categoryList(type)
+            DetailCategoryType.J -> categoryList(type)
+            DetailCategoryType.K -> categoryList(type)
+            DetailCategoryType.L -> categoryList(type)
+            DetailCategoryType.M -> categoryList(type)
+            DetailCategoryType.N -> categoryList(type)
+        }
     }
 }

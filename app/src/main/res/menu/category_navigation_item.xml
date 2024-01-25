@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/category_1"
+        android:title="ㄱ"/>
+    <item
+        android:id="@+id/category_2"
+        android:title="ㄴ" />
+    <item
+        android:id="@+id/category_3"
+        android:title="ㄷ" />
+    <item
+        android:id="@+id/category_4"
+        android:title="ㄹ" />
+    <item
+        android:id="@+id/category_5"
+        android:title="ㅁ" />
+    <item
+        android:id="@+id/category_6"
+        android:title="ㅂ" />
+    <item
+        android:id="@+id/category_7"
+        android:title="ㅅ" />
+    <item
+        android:id="@+id/category_8"
+        android:title="ㅇ" />
+    <item
+        android:id="@+id/category_9"
+        android:title="ㅈ" />
+    <item
+        android:id="@+id/category_10"
+        android:title="ㅊ" />
+    <item
+        android:id="@+id/category_11"
+        android:title="ㅋ" />
+    <item
+        android:id="@+id/category_12"
+        android:title="ㅌ" />
+    <item
+        android:id="@+id/category_13"
+        android:title="ㅍ" />
+    <item
+        android:id="@+id/category_14"
+        android:title="ㅎ" />
+</menu>

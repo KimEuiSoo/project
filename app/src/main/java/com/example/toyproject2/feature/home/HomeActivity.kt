@@ -28,13 +28,16 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         if (receive != null) {
 //            viewModel.setVisibility(true);
             viewModel.receiveData(receive)
-            userHelper.insertData(receive.email.toString().trim(), receive.password.toString().trim())
+            userHelper.insertData(
+                receive.email.toString().trim(),
+                receive.password.toString().trim()
+            )
         }
 
-        viewModel.event.observe(this){signUpComplete()}
+        viewModel.event.observe(this) { signUpComplete() }
     }
 
-    fun signUpComplete(){
+    fun signUpComplete() {
         finish()
         val intent: Intent = Intent(this, LoginActivity::class.java)
         startActivity(intent);

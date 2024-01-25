@@ -8,7 +8,7 @@ import com.example.throw_fornt.util.common.SingleLiveEvent
 import com.example.toyproject2.data.local.SignUp
 import kotlinx.coroutines.launch
 
-class IdViewModel: ViewModel() {
+class IdViewModel : ViewModel() {
     lateinit var signUp: SignUp
     val emailId: MutableLiveData<String> = MutableLiveData("")
 
@@ -19,17 +19,17 @@ class IdViewModel: ViewModel() {
     val btn: LiveData<Boolean>
         get() = _btn
 
-    fun checkEmaild(){
-        if(emailId.value.toString().length>=1) _btn.value = true;
+    fun checkEmaild() {
+        if (emailId.value.toString().length >= 1) _btn.value = true;
         else _btn.value = false
     }
 
-    fun nextPage(){
+    fun nextPage() {
         signUp = SignUp(emailId.value.toString(), "")
         _evnet.value = Event.ID
     }
 
-    sealed class Event(){
-        object ID: Event()
+    sealed class Event() {
+        object ID : Event()
     }
 }

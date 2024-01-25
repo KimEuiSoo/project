@@ -7,4 +7,4 @@ import kotlinx.parcelize.Parcelize
 data class SignUp(
     val email: String,
     val password: String,
-): Parcelable
+) : Parcelable

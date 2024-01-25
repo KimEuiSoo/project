@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.throw_fornt.util.common.SingleLiveEvent
 import com.example.toyproject2.data.local.SignUp
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel : ViewModel() {
     private val _title: MutableLiveData<String> = MutableLiveData("회원가입")
     private val _event: MutableLiveData<Event> = MutableLiveData()
     val event: LiveData<Event>
@@ -19,16 +19,16 @@ class HomeViewModel: ViewModel() {
     val password: LiveData<String>
         get() = _password
 
-    fun receiveData(item: SignUp){
-        _email.value=item.email
-        _password.value=item.password
+    fun receiveData(item: SignUp) {
+        _email.value = item.email
+        _password.value = item.password
     }
 
-    fun signUpFinish(){
+    fun signUpFinish() {
         _event.value = Event.Complete;
     }
 
-    sealed class Event(){
-        object Complete: Event()
+    sealed class Event() {
+        object Complete : Event()
     }
 }

@@ -22,15 +22,15 @@ class PasswordActivity : BindingActivity<ActivityPasswordBinding>(R.layout.activ
             viewModel.receiveData(receive)
         }
 
-        viewModel.event.observe(this){handleEvent(it)}
-        viewModel.password.observe(this){checkPassword()}
+        viewModel.event.observe(this) { handleEvent(it) }
+        viewModel.password.observe(this) { checkPassword() }
     }
 
-    private fun checkPassword(){
+    private fun checkPassword() {
         viewModel.checkPassword()
     }
 
-    private fun handleEvent(event: PasswordViewModel.Event){
+    private fun handleEvent(event: PasswordViewModel.Event) {
         finish()
         val intent: Intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("signUp", viewModel.signUp)

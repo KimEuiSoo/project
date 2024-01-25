@@ -101,6 +101,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:background="#F3F3F3"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <com.google.android.material.navigation.NavigationView
+                        android:id="@+id/nv_navigation_tab"
+                        onNavigationItemSelected="@{viewModel::setCategoryFragment}"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:itemTextColor="@color/bg_navigation_color"
+                        app:itemBackground="@drawable/bg_navigation_bgcolor"
+                        app:labelVisibilityMode="labeled"
+                        android:paddingTop="0dp"
+                        android:layout_weight="3"
+                        app:menu="@menu/category_navigation_item">
+                    </com.google.android.material.navigation.NavigationView>
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/fcv_container_category"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:background="@color/select_bg"/>
+                </LinearLayout>
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

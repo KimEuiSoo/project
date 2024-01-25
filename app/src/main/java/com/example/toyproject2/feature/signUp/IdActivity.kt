@@ -18,15 +18,15 @@ class IdActivity : BindingActivity<ActivityIdBinding>(R.layout.activity_id) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.emailId.observe(this){checkEmail()}
-        viewModel.event.observe(this){handleEvent(it)}
+        viewModel.emailId.observe(this) { checkEmail() }
+        viewModel.event.observe(this) { handleEvent(it) }
     }
 
-    private fun checkEmail(){
+    private fun checkEmail() {
         viewModel.checkEmaild()
     }
 
-    private fun handleEvent(event: IdViewModel.Event){
+    private fun handleEvent(event: IdViewModel.Event) {
         val intent: Intent = Intent(this, PasswordActivity::class.java)
         intent.putExtra("id", viewModel.signUp)
         startActivity(intent)

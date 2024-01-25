@@ -14,7 +14,7 @@ import com.example.toyproject2.data.local.DataPage
 import com.example.toyproject2.data.local.ProductItem
 import com.example.toyproject2.model.TestGlobal
 
-class MainHomeViewModel(application: Application): AndroidViewModel(application) {
+class MainHomeViewModel(application: Application) : AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext
     private val globalHelper: TestGlobal = TestGlobal()
 
@@ -41,15 +41,16 @@ class MainHomeViewModel(application: Application): AndroidViewModel(application)
     val rLayoutManager: LiveData<GridLayoutManager>
         get() = _rLayoutManager
 
-    fun bestProduct(){
-        val adapter = ProductItemAdapter(context, testBestProduct(), ProductType.BEST,this::service)
+    fun bestProduct() {
+        val adapter =
+            ProductItemAdapter(context, testBestProduct(), ProductType.BEST, this::service)
         _bLayoutManager.value = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter.notifyDataSetChanged()
 
         _bRecyclerView.value = adapter
     }
 
-    fun newProduct(){
+    fun newProduct() {
         val adapter = ProductItemAdapter(context, testBestProduct(), ProductType.NEW, this::service)
         _nLayoutManager.value = GridLayoutManager(context, 2)
         adapter.notifyDataSetChanged()
@@ -57,7 +58,7 @@ class MainHomeViewModel(application: Application): AndroidViewModel(application)
         _nRecyclerView.value = adapter
     }
 
-    fun reservationProduct(){
+    fun reservationProduct() {
         val adapter = ProductItemAdapter(context, testBestProduct(), ProductType.NEW, this::service)
         _rLayoutManager.value = GridLayoutManager(context, 2)
         adapter.notifyDataSetChanged()
@@ -67,21 +68,21 @@ class MainHomeViewModel(application: Application): AndroidViewModel(application)
 
 
     //TODO 테스트 배너 이미지
-    fun testImageItems():ArrayList<DataPage>{
+    fun testImageItems(): ArrayList<DataPage> {
         var items: ArrayList<DataPage> = ArrayList()
         items = globalHelper.bannerList()
         return items
     }
 
     //TODO 테스트 베스트 상품 이미지
-    fun testBestProduct(): ArrayList<ProductItem>{
+    fun testBestProduct(): ArrayList<ProductItem> {
         var items: ArrayList<ProductItem> = ArrayList()
         items = globalHelper.itemList()
         return items
     }
 
-    fun service(item: ProductItem, type: String){
-        if(type.equals("favorite"))
+    fun service(item: ProductItem, type: String) {
+        if (type.equals("favorite"))
             Log.d("data", "favorite item : ${item.title}")
         else
             Log.d("data", "item : ${item.title}")

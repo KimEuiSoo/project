@@ -41,14 +41,13 @@ class PasswordViewModel() : ViewModel() {
     }
 
     fun checkPassword() {
-        if (Regex(pwPattern).find(password.value.toString()) != null && password.value.toString().length>=1) {
+        if (Regex(pwPattern).find(password.value.toString()) != null && password.value.toString().length >= 1) {
             _correct.value = true
             _passwordCheck.value = Color.parseColor("#00A3FF")
-        } else if(Regex(pwPattern).find(password.value.toString()) == null && password.value.toString().length>=1){
+        } else if (Regex(pwPattern).find(password.value.toString()) == null && password.value.toString().length >= 1) {
             _correct.value = false
             _passwordCheck.value = Color.parseColor("#FF5252")
-        }
-        else{
+        } else {
             _correct.value = false
             _passwordCheck.value = Color.parseColor("#8E9398")
         }

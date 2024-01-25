@@ -11,11 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.toyproject2.R
 import com.example.toyproject2.data.local.CategoryItem
 
-class CategoryItemAdapter(private var context: Context, private var items: ArrayList<CategoryItem>, private var type: CategoryType, val onClick: (CategoryItem) -> Unit)
-    : RecyclerView.Adapter<CategoryItemAdapter.CategoryViewHolder>() {
+class CategoryItemAdapter(
+    private var context: Context,
+    private var items: ArrayList<CategoryItem>,
+    private var type: CategoryType,
+    val onClick: (CategoryItem) -> Unit
+) : RecyclerView.Adapter<CategoryItemAdapter.CategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_item_list, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.category_item_list, parent, false)
         return CategoryViewHolder(view)
     }
 
@@ -37,7 +42,7 @@ class CategoryItemAdapter(private var context: Context, private var items: Array
         }
     }
 
-    inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemCategory: ConstraintLayout = itemView.findViewById(R.id.category_item)
         val image: ImageView = itemView.findViewById(R.id.category_image)
         val title: TextView = itemView.findViewById(R.id.category_title)

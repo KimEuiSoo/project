@@ -10,10 +10,12 @@ import com.example.toyproject2.R
 import com.example.toyproject2.data.local.DataPage
 import android.content.Context
 
-class ImageSliderAdapter(private val context: Context, private val images: ArrayList<DataPage>): RecyclerView.Adapter<ImageSliderAdapter.MyViewHolder>() {
+class ImageSliderAdapter(private val context: Context, private val images: ArrayList<DataPage>) :
+    RecyclerView.Adapter<ImageSliderAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.banner_list_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.banner_list_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -31,7 +33,7 @@ class ImageSliderAdapter(private val context: Context, private val images: Array
     }
 
 
-    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById<ImageView>(R.id.imageSlider)
     }
 }
